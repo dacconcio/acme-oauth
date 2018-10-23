@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import axios from 'axios';
 import ListPlaces from './components/ListPlaces.js';
+import jwt from 'jwt-simple';
 
 class App extends Component {
   constructor() {

@@ -7,7 +7,7 @@ const queryString = require('query-string');
 const jwt = require('jwt-simple');
 const bodyParser = require('body-parser');
 
-const { User, Place } = require('./db/models.js');
+const { User } = require('./db/models.js');
 
 try {
   Object.assign(process.env, require('./.env.js'));
@@ -19,32 +19,12 @@ app.use(bodyParser.json());
 app.engine('html', ejs.renderFile);
 app.use('/dist', Express.static(path.join(__dirname, 'dist')));
 
+app.use('/api/places', require('./routes/places.js'));
 
 app.get('/', (req, res, next) => {
-  res.render(path.join(__dirname, '/dist/index.html'), {
+  res.render(path.join(__dirname, 'dist/index.html'), {
     token: req.query.token
   });
-});
-
-app.get('/api/places', (req, res, next) => {
-  Place.findAll()
-    .then(places => res.send(places))
-    .catch(err => next(err));
-});
-app.delete('/api/places/:id', (req, res, next) => {
-  Place.findById(req.params.id)
-    .then(place => place.destroy())
-    .then(() => res.sendStatus(200))
-    .catch(err => next(err));
-});
-
-app.post('/api/places/:name', (req, res, next) => {
-  Place.create({
-    name: req.params.name,
-    UserId: req.body.id
-  })
-    .then(place => res.send(place))
-    .catch(err => next(err));
 });
 
 app.get('/api/get_user/:token', (req, res, next) => {
