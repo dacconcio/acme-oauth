@@ -50,7 +50,6 @@ class App extends Component {
       place: place
     };
 
-
     axios.post(`/api/places/`, objToPost).then(response => {
       this.setState({ places: [...this.state.places, response.data] });
     });
