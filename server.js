@@ -26,7 +26,6 @@ app.get('/', (req, res, next) => {
   });
 });
 
-
 app.get('/api/places', (req, res, next) => {
   Place.findAll()
     .then(places => res.send(places))
@@ -44,7 +43,6 @@ app.post('/api/places/:name', (req, res, next) => {
     name: req.params.name,
     UserId: req.body.id
   })
-
     .then(place => res.send(place))
     .catch(err => next(err));
 });
