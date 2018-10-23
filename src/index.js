@@ -74,13 +74,15 @@ class App extends Component {
         {this.state.user.id ? (
           <div>
             Hello! {this.state.user.userName}
-            <div onClick={this.logout}>LOGOUT</div>
+            <button onClick={this.logout}>LOGOUT</button>
           </div>
         ) : (
           <form action="/api/github/auth">
             <input type="submit" value="LOGIN WITH GITHUB" />
           </form>
         )}
+        <br />
+        <br />
         <div id="pac-container">
           <input
             disabled={this.state.user.id ? false : true}

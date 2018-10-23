@@ -7,7 +7,7 @@ const ListPlaces = props => {
         return (
           <div key={place.id}>
             {place.name}
-            <div onClick={() => props.deleteFunc(place.id)}>DELETE</div>
+            <button onClick={() => props.deleteFunc(place.id)}>DELETE</button>
           </div>
         );
       })}
