@@ -19,18 +19,19 @@ app.use(bodyParser.json());
 app.engine('html', ejs.renderFile);
 app.use('/dist', Express.static(path.join(__dirname, 'dist')));
 
+
+app.get('/', (req, res, next) => {
+  res.render(path.join(__dirname, '/dist/index.html'), {
+    token: req.query.token
+  });
+});
+
+
 app.get('/api/places', (req, res, next) => {
   Place.findAll()
     .then(places => res.send(places))
     .catch(err => next(err));
 });
-
-app.get('/', (req, res, next) => {
-  res.render(path.join(__dirname, 'dist/index.html'), {
-    token: req.query.token
-  });
-});
-
 app.delete('/api/places/:id', (req, res, next) => {
   Place.findById(req.params.id)
     .then(place => place.destroy())
