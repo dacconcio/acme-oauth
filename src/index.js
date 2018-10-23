@@ -74,7 +74,7 @@ class App extends Component {
         {this.state.user.id ? (
           <div>
             Hello! {this.state.user.userName}
-            <button onClick={this.logout}>LOGOUT</button>
+            <button onClick={this.logout}>LOGOUT!</button>
           </div>
         ) : (
           <form action="/api/github/auth">
