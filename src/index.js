@@ -71,10 +71,6 @@ class App extends Component {
   render() {
     return (
       <div>
-
-
-        lala
-
         {this.state.user.id ? (
           <div>
             Hello! {this.state.user.userName}
