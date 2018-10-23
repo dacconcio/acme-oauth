@@ -45,7 +45,12 @@ class App extends Component {
   }
 
   addPlace(place) {
-    axios.post(`/api/places/${place}`, this.state.user).then(response => {
+    const objToPost = {
+      user: this.state.user,
+      place: place
+    };
+
+    axios.post(`/api/places/`, objToPost).then(response => {
       this.setState({ places: [...this.state.places, response.data] });
     });
   }

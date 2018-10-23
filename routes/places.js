@@ -15,10 +15,10 @@ router.delete('/:id', (req, res, next) => {
     .catch(err => next(err));
 });
 
-router.post('/:name', (req, res, next) => {
+router.post('/', (req, res, next) => {
   Place.create({
-    name: req.params.name,
-    UserId: req.body.id
+    name: req.body.place.name,
+    UserId: req.body.user.id,
   })
     .then(place => res.send(place))
     .catch(err => next(err));
