@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArIRgqHb3NZksaTy8-gBkNeZvP4uPnGkk&libraries=places"></script>
+
+  <script src="/dist/main.js" defer></script>
+  <script>
+    const token = '<%= token %>'
+
+    if(token){
+      window.localStorage.setItem('token', token)
+      window.location.search = '';
+    }
+
+  </script>
+  <title></title>
+</head>
+<body>
+  <div id='root'>
+
+  </div>
+</body>
+</html>
